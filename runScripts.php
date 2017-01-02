@@ -1,3 +1,4 @@
+<?php include 'header.php'; ?>
 <?php
 echo "=============================================";
 echo "<br>";
@@ -64,3 +65,4 @@ if (!empty($_POST)){
     }
 
 ?>
+<?php include 'footer.php'; ?>
