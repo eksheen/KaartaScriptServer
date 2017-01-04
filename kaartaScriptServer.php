@@ -18,9 +18,9 @@
 				$('#pointCloudTree').fileTree({
 //	need to set the proper root location for the files. 
 //	comment out the original
-//					root: '/home/eksheen/evan-sheen.com/Kaarta/', 	
+					root: '/home/eksheen/evan-sheen.com/Kaarta/recordings/', 	
 //	stencil's data files are here:
-					root: '/home/realearth/recordings/',
+//					root: '/home/realearth/recordings/',
 					script: 'connectors/jqueryFileTree.php',
 					multiFolder: true
 				}, function(file) {
@@ -32,8 +32,8 @@
 				});
 
 				$('#trajectoryTree').fileTree({
-//					root: '/home/eksheen/evan-sheen.com/Kaarta/',
-					root: '/home/realearth/recordings/',
+					root: '/home/eksheen/evan-sheen.com/Kaarta/recordings/',
+//					root: '/home/realearth/recordings/',
 					script: 'connectors/jqueryFileTree.php',
 					folderEvent: 'click',
 					multiFolder: true
