@@ -10,7 +10,7 @@ $trajectory_in = "trajectory_temp.ply";
 $trajectory_out = "trajectory_temp_loop_close.ply";
 $matchDis = "4.0";
 $matchReignHori = "15.0";
-$matchReignVert = "10.0";
+$matchReginVert = "10.0";
 $poseStackNum = "20";
 $pointSearchRad = "0.1";
 
@@ -663,7 +663,6 @@ function switch_to_mappingRun(){
 }
 
 echo "=============================================";
-echo "<br>";
 
 ?>
 <?php include 'footer.php'; ?>

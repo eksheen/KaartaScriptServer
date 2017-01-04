@@ -1,10 +1,37 @@
-.container label {
+input.button {
+  width: 16px;
+  height: 16px;
+}
+
+.right input {
+  width: 16px;
+  height: 16px;
+}
+
+.left {
+    float: left;
+    width: 50%;
+}
+
+.right {
+    margin-left: 50%;
+}
+
+.right label {
   display: inline-block;
   text-align: left;
   clear: both;
   width: 400px;
 }
- .container input {
+
+.left label {
+  display: inline-block;
+  text-align: left;
+  clear: both;
+  width: 400px;
+}
+
+ .left input {
    display: inline-block;
    width: 200px;
 }
