@@ -2,16 +2,24 @@
   display: inline-block;
   text-align: left;
   clear: both;
-  width: 150px;
+  width: 400px;
 }
  .container input {
    display: inline-block;
    width: 200px;
 }
 
+label.varLabel {
+  width: 250px;
+}
+
+label.varLabel1 {
+  width: 300px;
+}
+
 #valuesSubmit {
   font-size: 1em;
-  width: 360px;
+  width: 460px;
   height: 30px;
   display: inline-block;
   background-color: #000264;
