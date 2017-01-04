@@ -83,20 +83,26 @@
 				<h3>Press the play button to fire a script</h3>
 				<!-- We use form submissions to send the data to the server to be rtrieved with our php code. -->
 				<div class="container1">
-					<form action="runScripts.php" method="post">
-					 <p>Choose Last Pose <input type="image" src="images/play-button.ico" class="button" name="choose_last_poseRun" value="choose_last_poseRun" /> </p>
+					<form action="runScripts.php" method="post">					 
 					 <p>Choose Map for Localization <input type="image" src="images/play-button.ico" class="button" name="choose_map_for_localizationRun" value="choose_map_for_localizationRun" /> </p>
-					 <p>Restore Default Paramaters <input type="image" src="images/play-button.ico" class="button" name="restore_default_paramatersRun" value="restore_default_paramatersRun" /> </p>
-					 <p>Restore Last Pose <input type="image" src="images/play-button.ico" class="button" name="restore_last_poseRun" value="restore_last_poseRun" /> </p>
-					 <p>Save Last Pose <input type="image" src="images/play-button.ico" class="button" name="save_last_poseRun" value="save_last_poseRun" /> </p>
+
+					 <p>Switch to Localization <input type="image" src="images/play-button.ico" class="button" name="switch_to_localizationRun" value="switch_to_localizationRun" /> </p>
+					 <p>Switch to Localization from Last <input type="image" src="images/play-button.ico" class="button" name="switch_to_localization_from_lastRun" value="switch_to_localization_from_lastRun" /> </p>
+
+					 <p>Switch to Localization with Camera <input type="image" src="images/play-button.ico" class="button" name="switch_to_localization_with_cameraRun" value="switch_to_localization_with_cameraRun" /> </p>
+					 <p>Switch to Localization with Camera from Last <input type="image" src="images/play-button.ico" class="button" name="switch_to_localization_with_camera_from_lastRun" value="switch_to_localization_with_camera_from_lastRun" /> </p>
+
+					 <p>Switch to Mapping <input type="image" src="images/play-button.ico" class="button" name="switch_to_mappingRun" value="switch_to_mappingRun" /> </p>
+					 <p>Switch to Mapping with Camera <input type="image" src="images/play-button.ico" class="button" name="switch_to_mapping_with_cameraRun" value="switch_to_mapping_with_cameraRun" /> </p>
+
 					 <p>Start Loop Closure <input type="image" src="images/play-button.ico" class="button" name="start_loop_closingRun" value="start_loop_closingRun" /> </p>
 					 <p>Start Thinning <input type="image" src="images/play-button.ico" class="button" name="start_thinningRun" value="start_thinningRun" /> </p>
-					 <p>Switch to Localization from Last <input type="image" src="images/play-button.ico" class="button" name="switch_to_localization_from_lastRun" value="switch_to_localization_from_lastRun" /> </p>
-					 <p>Switch to Localization with Camera from Last <input type="image" src="images/play-button.ico" class="button" name="switch_to_localization_with_camera_from_lastRun" value="switch_to_localization_with_camera_from_lastRun" /> </p>
-					 <p>Switch to Localization with Camera <input type="image" src="images/play-button.ico" class="button" name="switch_to_localization_with_cameraRun" value="switch_to_localization_with_cameraRun" /> </p>
-					 <p>Switch to Localization <input type="image" src="images/play-button.ico" class="button" name="switch_to_localizationRun" value="switch_to_localizationRun" /> </p>
-					 <p>Switch to Mapping with Camera <input type="image" src="images/play-button.ico" class="button" name="switch_to_mapping_with_cameraRun" value="switch_to_mapping_with_cameraRun" /> </p>
-					 <p>Switch to Mapping <input type="image" src="images/play-button.ico" class="button" name="switch_to_mappingRun" value="switch_to_mappingRun" /> </p>
+
+					 <p>Choose Last Pose <input type="image" src="images/play-button.ico" class="button" name="choose_last_poseRun" value="choose_last_poseRun" /> </p>
+					 <p>Save Last Pose <input type="image" src="images/play-button.ico" class="button" name="save_last_poseRun" value="save_last_poseRun" /> </p>
+					 <p>Restore Last Pose <input type="image" src="images/play-button.ico" class="button" name="restore_last_poseRun" value="restore_last_poseRun" /> </p>
+
+					 <p>Restore Default Paramaters <input type="image" src="images/play-button.ico" class="button" name="restore_default_paramatersRun" value="restore_default_paramatersRun" /> </p>
 					</form>
 				</div>
 			</div>
