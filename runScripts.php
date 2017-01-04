@@ -53,7 +53,7 @@ if (!empty($_POST)){
 
 
 function choose_last_poseRun($last_pose_in) {
-  echo nl2br("choose_last_pose.run".PHP_EOL);
+  echo nl2br("Choose Last Pose: ".PHP_EOL);
 
 ##	#!/bin/bash
 ##	echo ""
@@ -61,8 +61,6 @@ function choose_last_poseRun($last_pose_in) {
 ##	echo ""
 ##	rosrun clay_launch choose_last_pose.sh
 
-#	shell_exec('rosrun clay_launch choose_last_pose.sh');
-  echo nl2br("rosrun clay_launch choose_last_pose.sh" . PHP_EOL);
   choose_last_poseSh($last_pose_in);
 
 ##	echo ""
@@ -70,7 +68,6 @@ function choose_last_poseRun($last_pose_in) {
 ##	sleep 2
 
 ##	exit 0
-  echo nl2br(PHP_EOL);
   return (0);
 }
 
@@ -90,13 +87,12 @@ function choose_last_poseSh($last_pose_in) {
   shell_exec ('cp '.$last_pose_in.' ~/.data/last_pose.txt');
   echo nl2br("cp ".$last_pose_in." ~/.data/last_pose.txt".PHP_EOL);
 
-  echo nl2br(PHP_EOL);
   return(0);
 }
 
 
 function choose_map_for_localizationRun($pointcloud_in) {
-  echo nl2br("choose_map_for_localization.run" . PHP_EOL);
+  echo nl2br("Choose Map for Localization:" . PHP_EOL);
 
 ##	#!/bin/bash
 ##	echo ""
@@ -105,9 +101,6 @@ function choose_map_for_localizationRun($pointcloud_in) {
 
 ##	rosrun clay_launch choose_map_for_localization.sh
 
-#	shell_exec('rosrun clay_launch choose_map_for_localization.sh');
-
-  echo nl2br("rosrun clay_launch choose_map_for_localization.sh" . PHP_EOL);
   choose_map_for_localizationSH($pointcloud_in);
 
 ##	echo ""
@@ -116,12 +109,11 @@ function choose_map_for_localizationRun($pointcloud_in) {
 
 ##	exit 0
 
-  echo nl2br(PHP_EOL);
   return(0);
 }
 
 function choose_map_for_localizationSh($pointcloud_in) {
-  echo nl2br("choose_map_for_localization.sh'" . PHP_EOL);
+  echo nl2br("Choose Map For Localization cmd shell execution:" . PHP_EOL);
 
 ##	#!/bin/bash
 
@@ -135,7 +127,7 @@ function choose_map_for_localizationSh($pointcloud_in) {
 ##	rosrun point_cloud_receiver ply_to_bin.py $pointcloud_in
 
   shell_exec('rosrun point_cloud_receiver ply_to_bin.py '.$pointcloud_in);
-  echo nl2br("rosrun point_cloud_receiver ply_to_bin.py " . $pointcloud_in . PHP_EOL);
+  echo nl2br("rosrun point_cloud_receiver ply_to_bin.py ".$pointcloud_in.PHP_EOL);
 
 ##	echo ""
 ##	echo "Preparing map for localization."
@@ -144,15 +136,16 @@ function choose_map_for_localizationSh($pointcloud_in) {
 ##	rosrun clay_launch prepare_map_for_localization.sh
 
 #	shell_exec('rosrun clay_launch prepare_map_for_localization.sh');
-  echo nl2br("rosrun clay_launch prepare_map_for_localization.sh" . PHP_EOL);
-  prepare_map_for_localizationSh();
+#   echo nl2br("rosrun clay_launch prepare_map_for_localization.sh" . PHP_EOL);
+  
+    prepare_map_for_localizationSh();
 
-  echo nl2br(PHP_EOL);
+
   return(0);
 }
 
 function prepare_map_for_localizationRun() {
-  echo nl2br("prepare_map_for_localization.run" . PHP_EOL);
+  echo nl2br("Prepare Map for Localization:" . PHP_EOL);
 
 ##	#!/bin/bash
 ##	echo ""
@@ -160,9 +153,7 @@ function prepare_map_for_localizationRun() {
 ##	echo ""
 
 ##	rosrun clay_launch prepare_map_for_localization.sh
-
-#	shell_exec ('rosrun clay_launch prepare_map_for_localization.sh');
-  echo nl2br("rosrun clay_launch prepare_map_for_localization.sh" . PHP_EOL);
+    
   prepare_map_for_localizationSh();
 
 ##	echo ""
@@ -171,12 +162,11 @@ function prepare_map_for_localizationRun() {
 
 ##	exit 0
 
-  echo nl2br(PHP_EOL);
   return (0);
 }
 
 function prepare_map_for_localizationSh() {
-  echo nl2br("prepare_map_for_localization.sh" . PHP_EOL);
+  echo nl2br("Prepare Map for Localization cmd shell execution:" . PHP_EOL);
 
 ##	#!/bin/bash
 
@@ -193,14 +183,13 @@ function prepare_map_for_localizationSh() {
 
 ##	rosrun realearth_notification notify_user.bash -r
 
-  echo nl2br(PHP_EOL);
   return(0);
 }
 
 
 
 function restore_default_paramatersRun(){
-  echo nl2br("restore_default_paramaters.run" . PHP_EOL);
+  echo nl2br("Restore Default Paramaters:" . PHP_EOL);
 
 ##	#!/bin/bash
 ##	echo ""
@@ -209,8 +198,6 @@ function restore_default_paramatersRun(){
 
 ##	rosrun clay_launch restore_default_paramaters.sh
 
-#	shell_exec('rosrun clay_launch restore_default_paramaters.sh');
-  echo nl2br("rosrun clay_launch restore_default_paramaters.sh" . PHP_EOL);
   restore_default_paramatersSH();
 
 ##	echo "The window will close automatically in 2 seconds."
@@ -218,12 +205,11 @@ function restore_default_paramatersRun(){
 
 ##	exit 0
 
-  echo nl2br(PHP_EOL);
   return(0);
 }
 
 function restore_default_paramatersSh() {
-  echo nl2br("restore_default_paramaters.sh" . PHP_EOL);
+  echo nl2br("Restore Default Paramaters cmd shell execution:" . PHP_EOL);
 
 ##	#!/bin/bash
 
@@ -240,30 +226,30 @@ function restore_default_paramatersSh() {
 
 ##	cp $STENCIL/install/share/clay_launch/params/default.yaml.bak $STENCIL/install/share/clay_launch/params/default.yaml
   shell_exec('cp '.$STENCIL.'/install/share/clay_launch/params/default.yaml.bak '.$STENCIL.'/install/share/clay_launch/params/default.yaml');
-
+  echo nl2br("cp ".$STENCIL."/install/share/clay_launch/params/default.yaml.bak ".$STENCIL."/install/share/clay_launch/params/default.yaml");
+    
 ##	rm $STENCIL/configuration.yaml
   shell_exec('rm '.$STENCIL.'/config.yaml');
+  echo nl2br("rm ".$STENCIL."/config.yaml");
 
 ##	ln -s $STENCIL/install/share/clay_launch/params/default.yaml $STENCIL/configuration.yaml
   shell_exec('ln -s '.$STENCIL.'/install/share/clay_launch/params/default.yaml '.$STENCIL.'/congiguration.yaml');
+  echo nl2br("ln -s ".$STENCIL."/install/share/clay_launch/params/default.yaml ".$STENCIL."/congiguration.yaml");
 
-  echo nl2br("This function needs to be tested carefully." . PHP_EOL);
+  echo nl2br("This function needs to be tested carefully. ".$STENCIL. PHP_EOL);
 
-  echo nl2br(PHP_EOL);
   return(0);
 }
 
 function restore_last_poseRun(){
-  echo nl2br("restore_last_pose.run" . PHP_EOL);
+  echo nl2br("Restore Last Pose:" . PHP_EOL);
 ##	#!/bin/bash
 ##	echo ""
 ##	echo "Restoring Last Pose."
 ##	echo ""
 
 ##	rosrun clay_launch restore_last_pose.sh
-
-#	shell_exec('rosrun clay_launch restore_last_pose.sh');
-  echo nl2br("rosrun clay_launch restore_last_pose.sh" . PHP_EOL);
+    
   restore_last_poseSH();
 
 ##	echo "The window will close automatically in 2 seconds."
@@ -271,12 +257,11 @@ function restore_last_poseRun(){
 
 ##	exit 0
 
-  echo nl2br(PHP_EOL);
   return(0);
 }
 
 function restore_last_poseSh() {
-  echo nl2br("restore_last_pose.sh" . PHP_EOL);
+  echo nl2br("Restore Last Pose cmd shell execution:" . PHP_EOL);
 
 ##	#!/bin/bash
 
@@ -284,21 +269,19 @@ function restore_last_poseSh() {
 
   shell_exec('cp ~/.data/last_pose.txt.bak ~/.data/last_pose.txt');
   echo nl2br("cp ~/.data/last_pose.txt.bak ~/.data/last_pose.txt" . PHP_EOL);
+    
   return(0);
 }
 
 function save_last_poseRun(){
-  echo nl2br("save_last_pose.run" . PHP_EOL);
+  echo nl2br("Save Last Pose:" . PHP_EOL);
 ##	#!/bin/bash
 ##	echo ""
 ##	echo "Saving Last Pose."
 ##	echo ""
 
 ##	rosrun clay_launch save_last_pose.sh
-
-##	shell_exec('rosrun clay_launch save_last_pose.sh');
-
-  echo nl2br("rosrun clay_launch save_last_pose.sh" . PHP_EOL);
+    
   save_last_poseSh();
 
 ##	echo "The window will close automatically in 2 seconds."
@@ -306,12 +289,11 @@ function save_last_poseRun(){
 
 ##	exit 0
 
-  echo nl2br(PHP_EOL);
   return(0);
 }
 
 function save_last_poseSh() {
-  echo nl2br("save_last_pose.sh" . PHP_EOL);
+  echo nl2br("Save Last Pose cmd shell execution:" . PHP_EOL);
 
 ##	#!/bin/bash
 
@@ -325,14 +307,13 @@ function save_last_poseSh() {
   shell_exec('cp ~/.data/last_pose.txt $MAPS/last_pose_'.$time_string.'.txt');
   echo nl2br("cp ~/.data/last_pose.txt $MAPS/last_pose_".$time_string.".txt" . PHP_EOL);
 
-  echo nl2br("This function needs testing." . PHP_EOL);
+  echo nl2br("This function needs more testing." . PHP_EOL);
 
-  echo nl2br(PHP_EOL);
   return(0);
 }
 
 function start_loop_closingRun($pointcloud_in, $pointcloud_out, $trajectory_in, $trajectory_out, $matchDis, $matchReignHori, $matchReignVert, $poseStackNum){
-  echo nl2br("start_loop_closing.run" . PHP_EOL);
+  echo nl2br("Start Loop Closing: " . PHP_EOL);
 ##	#!/bin/bash
 ##	echo ""
 ##	echo "Launching loop closing (beta version)"
@@ -340,8 +321,6 @@ function start_loop_closingRun($pointcloud_in, $pointcloud_out, $trajectory_in, 
 
 ##	rosrun clay_launch start_loop_closing.sh
 
-#	shell_exec('rosrun clay_launch start_loop_closing.sh')'
-  echo nl2br("rosrun clay_launch start_loop_closing.sh" . PHP_EOL);
   start_loop_closingSh($pointcloud_in, $pointcloud_out, $trajectory_in, $trajectory_out, $matchDis, $matchReignHori, $matchReignVert, $poseStackNum);
 
 ##	echo ""
@@ -349,13 +328,12 @@ function start_loop_closingRun($pointcloud_in, $pointcloud_out, $trajectory_in, 
 ##	sleep 2
 
 ##	exit 0
-
-  echo nl2br(PHP_EOL);
+    
   return(0);
 }
 
 function start_loop_closingSh($pointcloud_in, $pointcloud_out, $trajectory_in, $trajectory_out, $matchDis, $matchReignHori, $matchReignVert, $poseStackNum) {
-  echo nl2br("start_loop_closing.sh" . PHP_EOL);
+  echo nl2br("Start Loop Closing cmd shell execution: " . PHP_EOL);
 
 ##	#!/bin/bash
 
@@ -404,11 +382,13 @@ function start_loop_closingSh($pointcloud_in, $pointcloud_out, $trajectory_in, $
   echo nl2br("roslaunch pose_graph pose_graph.launch pointcloud_in:=" . $pointcloud_in ." trajectory_in:=".$trajectory_in." pointcloud_out:=".$pointcloud_out." trajectory_out:=".$trajectory_out." matchDis:=".$matchDis." matchReignHori:=".$matchReignHori." matchReignVert:=".$matchReignVert." poseStackNum:=".$poseStackNum . PHP_EOL);
 
   echo nl2br("this function may not be working properly and needs to be tested." . PHP_EOL);
+   
+  return(0);
 
 }
 
 function start_thinningRun($pointcloud_in, $pointcloud_out, $pointSearchRad){
-  echo nl2br("start_thinning.run" . PHP_EOL);
+  echo nl2br("Start Thinning: " . PHP_EOL);
 ##	#!/bin/bash
 ##	echo ""
 ##	echo "Launching thinning (beta version)"
@@ -416,8 +396,6 @@ function start_thinningRun($pointcloud_in, $pointcloud_out, $pointSearchRad){
 
 ##	rosrun clay_launch start_thinning.sh
 
-#	shell_exec('rosrun clay_launch start_thinning.sh');
-  echo nl2br("rosrun clay_launch start_thinning.sh" . PHP_EOL);
   start_thinningSh($pointcloud_in, $pointcloud_out, $pointSearchRad);
 
 ##	echo ""
@@ -426,12 +404,11 @@ function start_thinningRun($pointcloud_in, $pointcloud_out, $pointSearchRad){
 
 ##	exit 0
 
-  echo nl2br(PHP_EOL);
   return (0);
 }
 
 function start_thinningSh($pointcloud_in, $pointcloud_out, $pointSearchRad) {
-  echo nl2br("start_thinning.sh" . PHP_EOL);
+  echo nl2br("Start Thinning cmd shell execution:" . PHP_EOL);
 ##	#!/bin/bash
 
 ##	read -p "pointcloud_in: " pointcloud_in
@@ -450,12 +427,11 @@ function start_thinningSh($pointcloud_in, $pointcloud_out, $pointSearchRad) {
   shell_exec('roslaunch plane_line_refiner plane_line_refiner.launch pointcloud_in:='.$pointcloud_in.' pointcloud_out:='.$pointcloud_out.' pointSearchRad:='.$pointSearchRad);
   echo nl2br("roslaunch plane_line_refiner plane_line_refiner.launch pointcloud_in:=".$pointcloud_in." pointcloud_out:=".$pointcloud_out." pointSearchRad:=".$pointSearchRad . PHP_EOL);
 
-  echo nl2br(PHP_EOL);
   return(0);
 }
 
 function switch_to_localization_from_lastRun(){
-  echo nl2br("switch_to_localization_from_last.run" . PHP_EOL);
+  echo nl2br("Switch to Localization from Last: " . PHP_EOL);
 ##	#!/bin/bash
 ##	echo ""
 ##	echo "Switching to localization from last."
@@ -473,10 +449,12 @@ function switch_to_localization_from_lastRun(){
 ##	cp $STENCIL/install/lib/clay_launch/scripts/start_localization_from_last.sh $STENCIL/install/lib/clay_launch/scripts/start.sh
 ##	cp $STENCIL/install/lib/clay_launch/scripts/stop_localization.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh
 
-  shell_exec('cp $STENCIL/install/lib/clay_launch/scripts/start_localization_from_last.sh $STENCIL/install/lib/clay_launch/scripts/start.sh');
-  echo nl2br("cp $STENCIL/install/lib/clay_launch/scripts/start_localization_from_last.sh $STENCIL/install/lib/clay_launch/scripts/start.sh" . PHP_EOL);
+  $STENCIL = "/home/realearth/stencil";
+    
+  shell_exec('cp '.$STENCIL.'/install/lib/clay_launch/scripts/start_localization_from_last.sh '.$STENCIL.'/install/lib/clay_launch/scripts/start.sh');
+  echo nl2br("cp ".$STENCIL."/install/lib/clay_launch/scripts/start_localization_from_last.sh ".$STENCIL."/install/lib/clay_launch/scripts/start.sh" . PHP_EOL);
 
-  shell_exec('cp $STENCIL/install/lib/clay_launch/scripts/stop_localization.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh');
+  shell_exec('cp '.$STENCIL.'/install/lib/clay_launch/scripts/stop_localization.sh '.$STENCIL.'/install/lib/clay_launch/scripts/stop.sh');
   echo nl2br("cp $STENCIL/install/lib/clay_launch/scripts/stop_localization.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh" . PHP_EOL);
 
 ##	echo "The update was completed. The window will close automatically in 2 seconds."
@@ -484,12 +462,11 @@ function switch_to_localization_from_lastRun(){
 
 ##	exit 0
 
-  echo nl2br(PHP_EOL);
   return(0);
 }
 
 function switch_to_localization_with_camera_from_lastRun(){
-  echo nl2br("switch_to_localization_with_camera_from_last.run" . PHP_EOL);
+  echo nl2br("Switch to Localization with Camera from Last:" . PHP_EOL);
 
 ##	#!/bin/bash
 ##	echo ""
@@ -505,13 +482,15 @@ function switch_to_localization_with_camera_from_lastRun(){
 ##	  export STENCIL=$HOME/realearth/stencil
 ##	fi
 
+      $STENCIL = "/home/realearth/stencil";
+    
 ##	cp $STENCIL/install/lib/clay_launch/scripts/start_localization_with_camera_from_last.sh $STENCIL/install/lib/clay_launch/scripts/start.sh
 ##	cp $STENCIL/install/lib/clay_launch/scripts/stop_localization_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh
 
-  shell_exec('cp $STENCIL/install/lib/clay_launch/scripts/start_localization_with_camera_from_last.sh $STENCIL/install/lib/clay_launch/scripts/start.sh');
+  shell_exec('cp '.$STENCIL.'/install/lib/clay_launch/scripts/start_localization_with_camera_from_last.sh '.$STENCIL.'/install/lib/clay_launch/scripts/start.sh');
   echo nl2br("cp $STENCIL/install/lib/clay_launch/scripts/start_localization_eith_camera_from_last.sh $STENCIL/install/lib/clay_launch/scripts/start.sh" . PHP_EOL);
 
-  shell_exec('cp $STENCIL/install/lib/clay_launch/scripts/stop_localization_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh');
+  shell_exec('cp '.$STENCIL.'/install/lib/clay_launch/scripts/stop_localization_with_camera.sh '.$STENCIL.'/install/lib/clay_launch/scripts/stop.sh');
   echo nl2br("cp $STENCIL/install/lib/clay_launch/scripts/stop_localization_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh" . PHP_EOL);
 
 ##	echo "The update was completed. The window will close automatically in 2 seconds."
@@ -519,12 +498,11 @@ function switch_to_localization_with_camera_from_lastRun(){
 
 ##	exit 0
 
-  echo nl2br(PHP_EOL);
   return(0);
 }
 
 function switch_to_localization_with_cameraRun(){
-  echo nl2br("switch_to_localization_with_camera.run" . PHP_EOL);
+  echo nl2br("Switch to Localization with Camera:" . PHP_EOL);
 ##	#!/bin/bash
 ##	echo ""
 ##	echo "Switching to localization with camera."
@@ -539,26 +517,27 @@ function switch_to_localization_with_cameraRun(){
 ##	  export STENCIL=$HOME/realearth/stencil
 ##	fi
 
+      $STENCIL = "/home/realearth/stencil";
+    
 ##	cp $STENCIL/install/lib/clay_launch/scripts/start_localization_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/start.sh
 ##	cp $STENCIL/install/lib/clay_launch/scripts/stop_localization_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh
 
-  shell_exec('cp $STENCIL/install/lib/clay_launch/scripts/start_localization_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/start.sh');
+  shell_exec('cp '.$STENCIL.'/install/lib/clay_launch/scripts/start_localization_with_camera.sh '.$STENCIL.'/install/lib/clay_launch/scripts/start.sh');
   echo nl2br("cp $STENCIL/install/lib/clay_launch/scripts/start_localization_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/start.sh" . PHP_EOL);
 
-  shell_exec('cp $STENCIL/install/lib/clay_launch/scripts/stop_localization_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh');
+  shell_exec('cp '.$STENCIL.'/install/lib/clay_launch/scripts/stop_localization_with_camera.sh '.$STENCIL.'/install/lib/clay_launch/scripts/stop.sh');
   echo nl2br("cp $STENCIL/install/lib/clay_launch/scripts/stop_localization_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh" . PHP_EOL);
 
 ##	echo "The update was completed. The window will close automatically in 2 seconds."
 ##	sleep 2
 
 ##	exit 0
-
-  echo nl2br(PHP_EOL);
+    
   return(0);
 }
 
 function switch_to_localizationRun(){
-  echo nl2br("switch_to_localization.run" . PHP_EOL);
+  echo nl2br("Switch to Localization: " . PHP_EOL);
 
 ##	#!/bin/bash
 ##	echo ""
@@ -574,13 +553,15 @@ function switch_to_localizationRun(){
 ##	  export STENCIL=$HOME/realearth/stencil
 ##	fi
 
+      $STENCIL = "/home/realearth/stencil";
+    
 ##	cp $STENCIL/install/lib/clay_launch/scripts/start_localization.sh $STENCIL/install/lib/clay_launch/scripts/start.sh
 ##	cp $STENCIL/install/lib/clay_launch/scripts/stop_localization.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh
 
-  shell_exec('cp $STENCIL/install/lib/clay_launch/scripts/start_localization.sh $STENCIL/install/lib/clay_launch/scripts/start.sh');
+  shell_exec('cp '.$STENCIL.'/install/lib/clay_launch/scripts/start_localization.sh '.$STENCIL.'/install/lib/clay_launch/scripts/start.sh');
   echo nl2br("cp $STENCIL/install/lib/clay_launch/scripts/start_localization.sh $STENCIL/install/lib/clay_launch/scripts/start.sh" . PHP_EOL);
 
-  shell_exec('cp $STENCIL/install/lib/clay_launch/scripts/stop_localization.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh');
+  shell_exec('cp '.$STENCIL.'/install/lib/clay_launch/scripts/stop_localization.sh '.$STENCIL.'/install/lib/clay_launch/scripts/stop.sh');
   echo nl2br("cp $STENCIL/install/lib/clay_launch/scripts/stop_localization.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh" . PHP_EOL);
 
 ##	echo "The update was completed. The window will close automatically in 2 seconds."
@@ -588,12 +569,11 @@ function switch_to_localizationRun(){
 
 ##	exit 0
 
-  echo nl2br(PHP_EOL);
   return(0);
 }
 
 function switch_to_mapping_with_cameraRun(){
-  echo nl2br("switch_to_mapping_with_camera.run" . PHP_EOL);
+  echo nl2br("Switchbto Mapping with Camera: " . PHP_EOL);
 ##	#!/bin/bash
 ##	echo ""
 ##	echo "Switching to mapping with camera."
@@ -608,13 +588,15 @@ function switch_to_mapping_with_cameraRun(){
 ##	  export STENCIL=$HOME/realearth/stencil
 ##	fi
 
+      $STENCIL = "/home/realearth/stencil";
+    
 ##	cp $STENCIL/install/lib/clay_launch/scripts/start_mapping_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/start.sh
 ##	cp $STENCIL/install/lib/clay_launch/scripts/stop_mapping_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh
 
-  shell_exec('cp $STENCIL/install/lib/clay_launch/scripts/start_mapping_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/start.sh');
+  shell_exec('cp '.$STENCIL.'/install/lib/clay_launch/scripts/start_mapping_with_camera.sh '.$STENCIL.'/install/lib/clay_launch/scripts/start.sh');
   echo nl2br("cp $STENCIL/install/lib/clay_launch/scripts/start_mapping_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/start.sh" . PHP_EOL);
 
-  shell_exec('cp $STENCIL/install/lib/clay_launch/scripts/stop_mapping_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh');
+  shell_exec('cp '.$STENCIL.'/install/lib/clay_launch/scripts/stop_mapping_with_camera.sh '.$STENCIL.'/install/lib/clay_launch/scripts/stop.sh');
   echo nl2br("cp $STENCIL/install/lib/clay_launch/scripts/stop_mapping_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh" . PHP_EOL);
 
 ##	echo "The update was completed. The window will close automatically in 2 seconds."
@@ -622,12 +604,11 @@ function switch_to_mapping_with_cameraRun(){
 
 ##	exit 0
 
-  echo nl2br(PHP_EOL);
   return(0);
 }
 
 function switch_to_mappingRun(){
-  echo nl2br("switch_to_mapping.run" . PHP_EOL);
+  echo nl2br("Switch to Mapping: " . PHP_EOL);
 
 ##	#!/bin/bash
 ##	echo ""
@@ -643,13 +624,15 @@ function switch_to_mappingRun(){
 ##	  export STENCIL=$HOME/realearth/stencil
 ##	fi
 
+    $STENCIL = "/home/realearth/stencil";
+    
 ##	cp $STENCIL/install/lib/clay_launch/scripts/start_mapping.sh $STENCIL/install/lib/clay_launch/scripts/start.sh
 ##	cp $STENCIL/install/lib/clay_launch/scripts/stop_mapping.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh
 
-  shell_exec('cp $STENCIL/install/lib/clay_launch/scripts/start_mapping.sh $STENCIL/install/lib/clay_launch/scripts/start.sh');
+  shell_exec('cp '.$STENCIL.'/install/lib/clay_launch/scripts/start_mapping.sh '.$STENCIL.'/install/lib/clay_launch/scripts/start.sh');
   echo nl2br("cp $STENCIL/install/lib/clay_launch/scripts/start_mapping.sh $STENCIL/install/lib/clay_launch/scripts/start.sh" . PHP_EOL);
 
-  shell_exec('cp $STENCIL/install/lib/clay_launch/scripts/stop_mapping.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh');
+  shell_exec('cp '.$STENCIL.'/install/lib/clay_launch/scripts/stop_mapping.sh '.$STENCIL.'/install/lib/clay_launch/scripts/stop.sh');
   echo nl2br("cp $STENCIL/install/lib/clay_launch/scripts/stop_mapping.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh" . PHP_EOL);
 
 
@@ -657,8 +640,7 @@ function switch_to_mappingRun(){
 ##	sleep 2
 
 ##	exit 0
-
-  echo nl2br(PHP_EOL);
+    
   return(0);
 }
 
