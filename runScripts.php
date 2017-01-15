@@ -1,40 +1,92 @@
-<?php include 'header.php'; ?>
 <?php
-echo "=============================================";
-echo "<br>";
+header('Refresh: 4; URL=http://www.evan-sheen.com/Kaarta/kaartaScriptServer.php');
+if (isset($_GET['script'])) {
+  $script = $_GET['script'];
+}
+if(isset($_GET['pointcloud_in'])) {
+  $pointcloud_in = $_GET['pointcloud_in'];
+}
+if(isset($_GET['pointcloud_out'])) {
+  $pointcloud_out = $_GET['pointcloud_out'];
+}
+if(isset($_GET['last_pose_in'])) {
+  $last_pose_in = $_GET['last_pose_in'];
+}
+if(isset($_GET['trajectory_in'])) {
+  $trajectory_in = $_GET['trajectory_in'];
+}
+if(isset($_GET['trajectory_out'])) {
+  $trajectory_out = $_GET['trajectory_out'];
+}
+if(isset($_POST['matchDis'])) {
+  $matchDis = $_POST['matchDis'];
+} else {
+  $matchDis = "4.0";
+}
+if(isset($_POST['matchReginHori'])) {
+  $matchReginHori = $_POST['matchReginHori'];
+} else {
+  $matchReginHori = "15.0";
+}
+if(isset($_POST['matchReginVert'])) {
+  $matchReginVert = $_POST['matchReginVert'];
+} else {
+  $matchReginVert = "10.0";
+}
+if(isset($_POST['poseStackNum'])) {
+  $poseStackNum = $_POST['poseStackNum'];
+} else {
+  $poseStackNum = "20";
+}
+if(isset($_POST['pointSearchRad'])) {
+  $pointSearchRad = $_POST['pointSearchRad'];
+} else {
+  $pointSearchRad = "0.1";
+}
 
-$last_pose_in = "trajectory.ply";
-$pointcloud_in = "pointcloud.ply";
-$pointcloud_out = "pointcloud_temp_loop_close.ply";
-$trajectory_in = "trajectory_temp.ply";
-$trajectory_out = "trajectory_temp_loop_close.ply";
-$matchDis = "4.0";
-$matchReignHori = "15.0";
-$matchReginVert = "10.0";
-$poseStackNum = "20";
-$pointSearchRad = "0.1";
+echo $script;
+echo "<br>";
+echo $pointcloud_in;
+echo "<br>";
+echo $last_pose_in;
+echo "<br>";
+echo $pointcloud_out;
+echo "<br>";
+echo $trajectory_in;
+echo "<br>";
+echo $trajectory_out;
+echo "<br>";
+echo $matchDis;
+echo "<br>";
+echo $matchReginHori;
+echo "<br>";
+echo $matchReginVert;
+echo "<br>";
+echo $poseStackNum;
+echo "<br>";
+echo $pointSearchRad;
+echo "<br>";
 
 
 //We use forms to submit data to the server
-//We then check which value was sent with (isset($_POST['...']))
+//We then check which value was sent with (isset($_GET['...']))
 //We can run as many scripts as we need to by adding buttons above
-//and checking ~ if(isset($_POST['...'])) ~ it is set then
+//and checking ~ if(isset($_GET['...'])) ~ it is set then
 //adding the function to correspond for the script.
 //Should essentially be lots of copying and pasting.
-if (!empty($_POST)){
-    if(isset($_POST['choose_last_poseRun'])){
+    if($script == 'choose_last_poseRun'){
       choose_last_poseRun($last_pose_in);
-    }elseif(isset($_POST['choose_map_for_localizationRun'])){
+    }elseif($script == 'choose_map_for_localizationRun'){
       choose_map_for_localizationRun($pointcloud_in);
-    }elseif(isset($_POST['restore_default_paramatersRun'])){
+    }elseif($script == 'restore_default_paramatersRun'){
       restore_default_paramatersRun();
     }elseif(isset($_POST['restore_last_poseRun'])){
       restore_last_poseRun();
     }elseif(isset($_POST['save_last_poseRun'])){
         save_last_poseRun();
-    }elseif(isset($_POST['start_loop_closingRun'])){
-      start_loop_closingRun($pointcloud_in, $pointcloud_out, $trajectory_in, $trajectory_out, $matchDis, $matchReignHori, $matchReignVert, $poseStackNum);
-    }elseif(isset($_POST['start_thinningRun'])){
+    }elseif($script == 'start_loop_closingRun'){
+      start_loop_closingRun($pointcloud_in, $pointcloud_out, $trajectory_in, $trajectory_out, $matchDis, $matchReginHori, $matchreginVert, $poseStackNum);
+    }elseif($script == 'start_thinningRun'){
       start_thinningRun($pointcloud_in, $pointcloud_out, $pointSearchRad);
     }elseif(isset($_POST['switch_to_localization_from_lastRun'])){
         switch_to_localization_from_lastRun();
@@ -49,7 +101,6 @@ if (!empty($_POST)){
     }elseif(isset($_POST['switch_to_mappingRun'])){
         switch_to_mappingRun();
     }
-}
 
 
 function choose_last_poseRun($last_pose_in) {
@@ -137,7 +188,7 @@ function choose_map_for_localizationSh($pointcloud_in) {
 
 #	shell_exec('rosrun clay_launch prepare_map_for_localization.sh');
 #   echo nl2br("rosrun clay_launch prepare_map_for_localization.sh" . PHP_EOL);
-  
+
     prepare_map_for_localizationSh();
 
 
@@ -153,7 +204,7 @@ function prepare_map_for_localizationRun() {
 ##	echo ""
 
 ##	rosrun clay_launch prepare_map_for_localization.sh
-    
+
   prepare_map_for_localizationSh();
 
 ##	echo ""
@@ -227,7 +278,7 @@ function restore_default_paramatersSh() {
 ##	cp $STENCIL/install/share/clay_launch/params/default.yaml.bak $STENCIL/install/share/clay_launch/params/default.yaml
   shell_exec('cp '.$STENCIL.'/install/share/clay_launch/params/default.yaml.bak '.$STENCIL.'/install/share/clay_launch/params/default.yaml');
   echo nl2br("cp ".$STENCIL."/install/share/clay_launch/params/default.yaml.bak ".$STENCIL."/install/share/clay_launch/params/default.yaml");
-    
+
 ##	rm $STENCIL/configuration.yaml
   shell_exec('rm '.$STENCIL.'/config.yaml');
   echo nl2br("rm ".$STENCIL."/config.yaml");
@@ -249,7 +300,7 @@ function restore_last_poseRun(){
 ##	echo ""
 
 ##	rosrun clay_launch restore_last_pose.sh
-    
+
   restore_last_poseSH();
 
 ##	echo "The window will close automatically in 2 seconds."
@@ -269,7 +320,7 @@ function restore_last_poseSh() {
 
   shell_exec('cp ~/.data/last_pose.txt.bak ~/.data/last_pose.txt');
   echo nl2br("cp ~/.data/last_pose.txt.bak ~/.data/last_pose.txt" . PHP_EOL);
-    
+
   return(0);
 }
 
@@ -281,7 +332,7 @@ function save_last_poseRun(){
 ##	echo ""
 
 ##	rosrun clay_launch save_last_pose.sh
-    
+
   save_last_poseSh();
 
 ##	echo "The window will close automatically in 2 seconds."
@@ -312,7 +363,7 @@ function save_last_poseSh() {
   return(0);
 }
 
-function start_loop_closingRun($pointcloud_in, $pointcloud_out, $trajectory_in, $trajectory_out, $matchDis, $matchReignHori, $matchReignVert, $poseStackNum){
+function start_loop_closingRun($pointcloud_in, $pointcloud_out, $trajectory_in, $trajectory_out, $matchDis, $matchReginHori, $matchreginVert, $poseStackNum){
   echo nl2br("Start Loop Closing: " . PHP_EOL);
 ##	#!/bin/bash
 ##	echo ""
@@ -321,18 +372,18 @@ function start_loop_closingRun($pointcloud_in, $pointcloud_out, $trajectory_in, 
 
 ##	rosrun clay_launch start_loop_closing.sh
 
-  start_loop_closingSh($pointcloud_in, $pointcloud_out, $trajectory_in, $trajectory_out, $matchDis, $matchReignHori, $matchReignVert, $poseStackNum);
+  start_loop_closingSh($pointcloud_in, $pointcloud_out, $trajectory_in, $trajectory_out, $matchDis, $matchReginHori, $matchreginVert, $poseStackNum);
 
 ##	echo ""
 ##	echo "The window will close automatically in 2 seconds."
 ##	sleep 2
 
 ##	exit 0
-    
+
   return(0);
 }
 
-function start_loop_closingSh($pointcloud_in, $pointcloud_out, $trajectory_in, $trajectory_out, $matchDis, $matchReignHori, $matchReignVert, $poseStackNum) {
+function start_loop_closingSh($pointcloud_in, $pointcloud_out, $trajectory_in, $trajectory_out, $matchDis, $matchReginHori, $matchreginVert, $poseStackNum) {
   echo nl2br("Start Loop Closing cmd shell execution: " . PHP_EOL);
 
 ##	#!/bin/bash
@@ -360,14 +411,14 @@ function start_loop_closingSh($pointcloud_in, $pointcloud_out, $trajectory_in, $
 ##	  matchDis="4.0"
 ##	fi
 
-##	read -p "matchReignHori (15.0): " matchReignHori
-##	if [ -z "$matchReignHori" ]; then
-##	  matchReignHori="15.0"
+##	read -p "matchReginHori (15.0): " matchReginHori
+##	if [ -z "$matchReginHori" ]; then
+##	  matchReginHori="15.0"
 ##	fi
 
-##	read -p "matchReignVert (10.0): " matchReignVert
-##	if [ -z "$matchReignVert" ]; then
-##	  matchReignVert="10.0"
+##	read -p "matchreginVert (10.0): " matchreginVert
+##	if [ -z "$matchreginVert" ]; then
+##	  matchreginVert="10.0"
 ##	fi
 
 ##	read -p "poseStackNum (20): " poseStackNum
@@ -376,13 +427,13 @@ function start_loop_closingSh($pointcloud_in, $pointcloud_out, $trajectory_in, $
 ##	fi
 ##	echo ""
 
-##	roslaunch pose_graph pose_graph.launch pointcloud_in:=$pointcloud_in trajectory_in:=$trajectory_in pointcloud_out:=$pointcloud_out trajectory_out:=$trajectory_out matchDis:=$matchDis matchReignHori:=$matchReignHori matchReignVert:=$matchReignVert poseStackNum:=$poseStackNum
+##	roslaunch pose_graph pose_graph.launch pointcloud_in:=$pointcloud_in trajectory_in:=$trajectory_in pointcloud_out:=$pointcloud_out trajectory_out:=$trajectory_out matchDis:=$matchDis matchReginHori:=$matchReginHori matchreginVert:=$matchreginVert poseStackNum:=$poseStackNum
 
-  shell_exec('roslaunch pose_graph pose_graph.launch pointcloud_in:='.$pointcloud_in.' trajectory_in:='.$trajectory_in.' pointcloud_out:='.$pointcloud_out.' trajectory_out:='.$trajectory_out.' matchDis:='.$matchDis.' matchReignHori:='.$matchReignHori.' matchReignVert:='.$matchReignVert.' poseStackNum:='.$poseStackNum);
-  echo nl2br("roslaunch pose_graph pose_graph.launch pointcloud_in:=" . $pointcloud_in ." trajectory_in:=".$trajectory_in." pointcloud_out:=".$pointcloud_out." trajectory_out:=".$trajectory_out." matchDis:=".$matchDis." matchReignHori:=".$matchReignHori." matchReignVert:=".$matchReignVert." poseStackNum:=".$poseStackNum . PHP_EOL);
+  shell_exec('roslaunch pose_graph pose_graph.launch pointcloud_in:='.$pointcloud_in.' trajectory_in:='.$trajectory_in.' pointcloud_out:='.$pointcloud_out.' trajectory_out:='.$trajectory_out.' matchDis:='.$matchDis.' matchReginHori:='.$matchReginHori.' matchreginVert:='.$matchreginVert.' poseStackNum:='.$poseStackNum);
+  echo nl2br("roslaunch pose_graph pose_graph.launch pointcloud_in:=" . $pointcloud_in ." trajectory_in:=".$trajectory_in." pointcloud_out:=".$pointcloud_out." trajectory_out:=".$trajectory_out." matchDis:=".$matchDis." matchReginHori:=".$matchReginHori." matchreginVert:=".$matchreginVert." poseStackNum:=".$poseStackNum . PHP_EOL);
 
   echo nl2br("this function may not be working properly and needs to be tested." . PHP_EOL);
-   
+
   return(0);
 
 }
@@ -450,7 +501,7 @@ function switch_to_localization_from_lastRun(){
 ##	cp $STENCIL/install/lib/clay_launch/scripts/stop_localization.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh
 
   $STENCIL = "/home/realearth/stencil";
-    
+
   shell_exec('cp '.$STENCIL.'/install/lib/clay_launch/scripts/start_localization_from_last.sh '.$STENCIL.'/install/lib/clay_launch/scripts/start.sh');
   echo nl2br("cp ".$STENCIL."/install/lib/clay_launch/scripts/start_localization_from_last.sh ".$STENCIL."/install/lib/clay_launch/scripts/start.sh" . PHP_EOL);
 
@@ -467,7 +518,6 @@ function switch_to_localization_from_lastRun(){
 
 function switch_to_localization_with_camera_from_lastRun(){
   echo nl2br("Switch to Localization with Camera from Last:" . PHP_EOL);
-
 ##	#!/bin/bash
 ##	echo ""
 ##	echo "Switching to localization with camera from last."
@@ -483,7 +533,7 @@ function switch_to_localization_with_camera_from_lastRun(){
 ##	fi
 
       $STENCIL = "/home/realearth/stencil";
-    
+
 ##	cp $STENCIL/install/lib/clay_launch/scripts/start_localization_with_camera_from_last.sh $STENCIL/install/lib/clay_launch/scripts/start.sh
 ##	cp $STENCIL/install/lib/clay_launch/scripts/stop_localization_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh
 
@@ -518,7 +568,7 @@ function switch_to_localization_with_cameraRun(){
 ##	fi
 
       $STENCIL = "/home/realearth/stencil";
-    
+
 ##	cp $STENCIL/install/lib/clay_launch/scripts/start_localization_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/start.sh
 ##	cp $STENCIL/install/lib/clay_launch/scripts/stop_localization_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh
 
@@ -532,7 +582,7 @@ function switch_to_localization_with_cameraRun(){
 ##	sleep 2
 
 ##	exit 0
-    
+
   return(0);
 }
 
@@ -554,7 +604,7 @@ function switch_to_localizationRun(){
 ##	fi
 
       $STENCIL = "/home/realearth/stencil";
-    
+
 ##	cp $STENCIL/install/lib/clay_launch/scripts/start_localization.sh $STENCIL/install/lib/clay_launch/scripts/start.sh
 ##	cp $STENCIL/install/lib/clay_launch/scripts/stop_localization.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh
 
@@ -589,7 +639,7 @@ function switch_to_mapping_with_cameraRun(){
 ##	fi
 
       $STENCIL = "/home/realearth/stencil";
-    
+
 ##	cp $STENCIL/install/lib/clay_launch/scripts/start_mapping_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/start.sh
 ##	cp $STENCIL/install/lib/clay_launch/scripts/stop_mapping_with_camera.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh
 
@@ -625,7 +675,7 @@ function switch_to_mappingRun(){
 ##	fi
 
     $STENCIL = "/home/realearth/stencil";
-    
+
 ##	cp $STENCIL/install/lib/clay_launch/scripts/start_mapping.sh $STENCIL/install/lib/clay_launch/scripts/start.sh
 ##	cp $STENCIL/install/lib/clay_launch/scripts/stop_mapping.sh $STENCIL/install/lib/clay_launch/scripts/stop.sh
 
@@ -640,11 +690,10 @@ function switch_to_mappingRun(){
 ##	sleep 2
 
 ##	exit 0
-    
+
   return(0);
 }
 
-echo "=============================================";
 
 ?>
 <?php include 'footer.php'; ?>
